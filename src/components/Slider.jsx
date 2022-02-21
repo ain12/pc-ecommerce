@@ -1,6 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+import { useState } from "react";
 import styled from "styled-components";
-import Image from "../asssets/iphone.jpg";
+import { sliderProducts } from "../products";
 
 const Container = styled.div`
   width: 100%;
@@ -32,6 +33,8 @@ const ArrowIcon = styled.div`
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
+  transform: translateX(${(props) => props.index * -100}vw);
+  transition: all 1.6s ease;
 `;
 
 const SlideContent = styled.div`
@@ -66,7 +69,7 @@ const Button = styled.button`
 `;
 
 const Img = styled.img`
-  height: 85%;
+  height: 80%;
 `;
 
 const ImageContainer = styled.div`
@@ -78,24 +81,36 @@ const ImageContainer = styled.div`
 `;
 
 const Slider = () => {
+  const [index, setIndex] = useState(0);
+
+  let handleEvent = (e) => {
+    if (e === "left") {
+      setIndex(index > 0 ? index - 1 : 2);
+    } else {
+      setIndex(index < 2 ? index + 1 : 0);
+    }
+  };
+
   return (
     <Container>
-      <ArrowIcon itemPosition="left">
+      <ArrowIcon itemPosition="left" onClick={() => handleEvent("left")}>
         <ArrowLeftOutlined />
       </ArrowIcon>
-      <Wrapper>
-        <SlideContent>
-          <ImageContainer>
-            <Img src={Image} />
-          </ImageContainer>
-          <InfoContainer>
-            <Title>FINANCIACIÓN IPHONE </Title>
-            <DescItem>Hasta 24 meses al 0% TAE</DescItem>
-            <Button>GET NOW</Button>
-          </InfoContainer>
-        </SlideContent>
+      <Wrapper index={index}>
+        {sliderProducts.map((item) => (
+          <SlideContent>
+            <ImageContainer>
+              <Img src={item.img} />
+            </ImageContainer>
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <DescItem>{item.description}</DescItem>
+              <Button>GET NOW</Button>
+            </InfoContainer>
+          </SlideContent>
+        ))}
       </Wrapper>
-      <ArrowIcon itemPosition="right">
+      <ArrowIcon itemPosition="right" onClick={() => handleEvent("right")}>
         <ArrowRightOutlined />
       </ArrowIcon>
     </Container>
