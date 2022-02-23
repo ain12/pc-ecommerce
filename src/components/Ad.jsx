@@ -11,7 +11,7 @@ const Container = styled.div`
   font-weight: bold;
 `;
 
-const Add = () => {
+const Ad = () => {
   return (
     <Container>
       Envios gratuitos a partir de 50€ / Devoluciones gratuitas
@@ -19,4 +19,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default Ad;
