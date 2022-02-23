@@ -61,8 +61,8 @@ const DescItem = styled.p`
 const Button = styled.button`
   padding: 12px;
   fonts-size: 25px;
-  background-color: #98b4aa;
-  color: #fff;
+  background-color: #ffd32d;
+  color: #000;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -105,7 +105,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <DescItem>{item.description}</DescItem>
-              <Button>GET NOW</Button>
+              <Button>ENTRAR</Button>
             </InfoContainer>
           </SlideContent>
         ))}
