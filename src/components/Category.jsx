@@ -25,6 +25,7 @@ const Box = styled.div`
 `;
 const Title = styled.h1`
   color: white;
+  font-size: 2.5rem;
   margin-bottom: 18px;
 `;
 const Button = styled.button`
